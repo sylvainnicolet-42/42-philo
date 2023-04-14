@@ -17,5 +17,23 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_env
+{
+	int	nb_philo;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	philo_must_eat;
+}	t_env;
+
+// ----- ENV ----- //
+t_env	*init_env(char **argv);
+int		valid_env(t_env *env);
+
+// ----- UTILS ----- //
+int		ft_atoi(const char *str);
+
+// ----- DEBUG ----- //
+void	display_env(t_env *env);
 
 #endif
