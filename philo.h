@@ -16,24 +16,36 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <pthread.h>
 
 typedef struct s_env
 {
-	int	nb_philo;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	philo_must_eat;
+	int		nb_philo;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		philo_must_eat;
 }	t_env;
 
+typedef struct s_philo
+{
+	int				id;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	t_env			*env;
+}	t_philo;
+
 // ----- ENV ----- //
-t_env	*init_env(char **argv);
-int		valid_env(t_env *env);
+int		init_env(char **argv, t_env *env);
+
+// ----- PHILOSOPHERS ----- //
+int		init_philo(t_philo *philo, t_env *env);
 
 // ----- UTILS ----- //
 int		ft_atoi(const char *str);
 
 // ----- DEBUG ----- //
 void	display_env(t_env *env);
+void	display_philo(t_philo *philo, t_env *env);
 
 #endif
