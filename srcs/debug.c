@@ -12,7 +12,7 @@
 
 #include "../philo.h"
 
-void	display_env(t_env *env)
+void	ft_display_env(t_env *env)
 {
 	printf("\n----- ENV -----\n");
 	printf("[nb_philo] => [%d]\n", env->nb_philo);
@@ -20,17 +20,20 @@ void	display_env(t_env *env)
 	printf("[time_to_eat] => [%d]\n", env->time_to_eat);
 	printf("[time_to_sleep] => [%d]\n", env->time_to_sleep);
 	printf("[philo_must_eat] => [%d]\n", env->philo_must_eat);
+	printf("[start_time] => [%ld]\n", env->start_time);
 }
 
-void	display_philo(t_philo *philo, t_env *env)
+void	ft_display_philos(t_philo *philo, t_env *env)
 {
 	int	i;
 
 	printf("\n----- PHILOSOPHERS -----\n");
 	i = 0;
-	while (i < env->nb_philo + 1)
+	while (i < env->nb_philo)
 	{
-		printf("[philo %d] => [id: %d]\n", i, philo[i].id);
+		printf("[philo %d] => [id: %d] ", i, philo[i].id);
+		printf("[nb_meal_eaten: %d] ", philo[i].nb_meal_eaten);
+		printf("[is_dead: %d]\n", philo[i].is_dead);
 		i++;
 	}
 }

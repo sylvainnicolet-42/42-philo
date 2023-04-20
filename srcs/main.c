@@ -12,16 +12,20 @@
 
 #include "../philo.h"
 
-static int	start_simulation(t_env *env)
+static int	ft_start_simulation(t_env *env)
 {
 	t_philo	*philo;
 
 	philo = malloc(sizeof(t_philo) * env->nb_philo);
 	if (!philo)
 		return (EXIT_FAILURE);
-	init_philo(philo, env);
-	display_philo(philo, env);
-	return (0);
+	ft_init_philos(philo, env);
+	ft_display_philos(philo, env);
+	ft_init_threads(philo, env);
+	env->start_time = ft_now();
+	ft_display_env(env);
+	ft_end_threads(philo, env);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
@@ -35,8 +39,7 @@ int	main(int argc, char **argv)
 			"[time_to_sleep] *[number_of_times_each_philosopher_must_eat]\n");
 		return (EXIT_FAILURE);
 	}
-	init_env(argv, &env);
-	display_env(&env);
-	start_simulation(&env);
+	ft_init_env(argv, &env);
+	ft_start_simulation(&env);
 	return (EXIT_SUCCESS);
 }

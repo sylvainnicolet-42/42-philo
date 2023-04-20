@@ -2,20 +2,24 @@
 	"nodes":[
 		{"type":"group","id":"b1ee01fbe8ad6614","x":40,"y":0,"width":1440,"height":360,"label":"Cycle"},
 		{"type":"group","id":"910907885a0120d0","x":-480,"y":480,"width":1134,"height":330,"label":"Structures"},
-		{"type":"text","text":"## Allowed functions\nmemset, printf, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock","id":"dee23c3c78356412","x":-480,"y":-300,"width":440,"height":240},
-		{"type":"text","text":"## Arguments\n- number_of_philosophers\n- time_to_die\n- time_to_eat\n- time_to_sleep\n- *number_of_times_each_philosopher_must_eat*","id":"46a2cd5d8b567846","x":-480,"y":0,"width":440,"height":240},
+		{"type":"group","id":"53e033c846ab26d8","x":-480,"y":-600,"width":440,"height":535,"label":"Functions"},
 		{"type":"text","text":"eat\n- take left and right fork\n- eat for [time_to_eat]\n- (put a counter)\n- put back left and right fork","id":"2026e87a4ce4ad1d","x":443,"y":60,"width":302,"height":220},
 		{"type":"text","text":"sleep\n- sleep for [time_to_sleep]","id":"73f156db3c677dce","x":798,"y":60,"width":280,"height":220},
-		{"type":"text","text":"think\n- think until left and right fork are available","id":"3869ba962a6dd5b7","x":1130,"y":60,"width":270,"height":220},
+		{"type":"text","text":"die\n- time_to_die","id":"70927ef15300d652","x":938,"y":410,"width":200,"height":120,"color":"1"},
+		{"type":"text","text":"## Arguments\n- number_of_philosophers\n- time_to_die\n- time_to_eat\n- time_to_sleep\n- *number_of_times_each_philosopher_must_eat*","id":"46a2cd5d8b567846","x":-480,"y":0,"width":440,"height":240},
 		{"type":"text","text":"think\n- think until left and right fork are available","id":"c9c2724fcf1e9fbf","x":120,"y":60,"width":270,"height":220},
 		{"type":"text","text":"## States\n- eat\n- sleep\n- think\n- die","id":"77c0dbc35412be17","x":0,"y":-300,"width":440,"height":240},
-		{"type":"text","text":"die\n- time_to_die","id":"70927ef15300d652","x":938,"y":410,"width":200,"height":120,"color":"1"},
+		{"type":"file","file":"Functions.png","id":"7a3b4f050437041b","x":-460,"y":-300,"width":400,"height":215},
+		{"type":"text","text":"## Allowed functions\nmemset, printf, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock","id":"dee23c3c78356412","x":-460,"y":-580,"width":400,"height":240},
+		{"type":"text","text":"think\n- think until left and right fork are available","id":"3869ba962a6dd5b7","x":1130,"y":60,"width":270,"height":220},
 		{"type":"text","text":"end of similuation\n- number_of_times_each_philosopher_must_eat","id":"64761c199004a5f4","x":938,"y":570,"width":440,"height":120,"color":"1"},
-		{"type":"text","text":"## env\n- time_to_die\n- time_to_eat\n- time_to_sleep\n- number_of_times_each_philosopher_must_eat\n- duration","id":"198e14d20155889f","x":-420,"y":510,"width":480,"height":260},
 		{"type":"text","text":"## philo\n- id\n- left philo\n- right philo\n- env","id":"d6ef83775cdac0c9","x":100,"y":510,"width":480,"height":260},
-		{"type":"text","text":"Init structures","id":"dd3b27bb2c8017bc","x":-242,"y":1040,"width":190,"height":60},
+		{"type":"text","text":"## env\n- time_to_die\n- time_to_eat\n- time_to_sleep\n- number_of_times_each_philosopher_must_eat\n- duration","id":"198e14d20155889f","x":-420,"y":510,"width":480,"height":260},
+		{"type":"text","text":"ft_init_env","id":"dd3b27bb2c8017bc","x":-242,"y":1040,"width":190,"height":60},
 		{"type":"text","text":"Main","id":"6a56d532a2b13fb2","x":-440,"y":1040,"width":140,"height":60},
-		{"type":"text","text":"Start simulation","id":"94b8f56ddd9da8c1","x":5,"y":1040,"width":190,"height":60}
+		{"type":"text","text":"ft_init_philo","id":"1d9d2dd65ffe49c9","x":5,"y":1580,"width":190,"height":60},
+		{"type":"text","text":"ft_init_threads","id":"516b621dbc97d57c","x":220,"y":1615,"width":190,"height":50},
+		{"type":"file","file":"ft_start_simulation.md","id":"0369d99bb909059d","x":60,"y":980,"width":520,"height":380}
 	],
 	"edges":[
 		{"id":"11b6e10176e5ae14","fromNode":"2026e87a4ce4ad1d","fromSide":"right","toNode":"73f156db3c677dce","toSide":"left"},
@@ -24,6 +28,6 @@
 		{"id":"8d49d2f68afc12de","fromNode":"b1ee01fbe8ad6614","fromSide":"bottom","toNode":"64761c199004a5f4","toSide":"left"},
 		{"id":"25445e3913878c1a","fromNode":"c9c2724fcf1e9fbf","fromSide":"right","toNode":"2026e87a4ce4ad1d","toSide":"left"},
 		{"id":"a005feb11d90c0be","fromNode":"6a56d532a2b13fb2","fromSide":"right","toNode":"dd3b27bb2c8017bc","toSide":"left"},
-		{"id":"373c34eeec09f8b1","fromNode":"dd3b27bb2c8017bc","fromSide":"right","toNode":"94b8f56ddd9da8c1","toSide":"left"}
+		{"id":"c4b15d73da16cd9f","fromNode":"dd3b27bb2c8017bc","fromSide":"right","toNode":"0369d99bb909059d","toSide":"left"}
 	]
 }

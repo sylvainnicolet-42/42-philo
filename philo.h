@@ -17,35 +17,52 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <sys/time.h>
+
+# define TRUE 1
+# define FALSE 0
 
 typedef struct s_env
 {
-	int		nb_philo;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		philo_must_eat;
+	int			nb_philo;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			philo_must_eat;
+	long int	start_time;
 }	t_env;
 
 typedef struct s_philo
 {
 	int				id;
+	int				nb_meal_eaten;
+	int				is_dead;
+	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	t_env			*env;
 }	t_philo;
 
 // ----- ENV ----- //
-int		init_env(char **argv, t_env *env);
+int			ft_init_env(char **argv, t_env *env);
 
 // ----- PHILOSOPHERS ----- //
-int		init_philo(t_philo *philo, t_env *env);
+int			ft_init_philos(t_philo *philo, t_env *env);
+void		*ft_philo_life(void *arg);
+
+// ----- THREADS ----- //
+int			ft_init_threads(t_philo *philo, t_env *env);
+void		ft_end_threads(t_philo *philo, t_env *env);
+
+// ----- ACTIONS ----- //
+void		ft_eat(t_philo *philo);
 
 // ----- UTILS ----- //
-int		ft_atoi(const char *str);
+int			ft_atoi(const char *str);
+long int	ft_now(void);
 
 // ----- DEBUG ----- //
-void	display_env(t_env *env);
-void	display_philo(t_philo *philo, t_env *env);
+void		ft_display_env(t_env *env);
+void		ft_display_philos(t_philo *philo, t_env *env);
 
 #endif

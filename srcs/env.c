@@ -12,7 +12,7 @@
 
 #include "../philo.h"
 
-int	init_env(char **argv, t_env *env)
+int	ft_init_env(char **argv, t_env *env)
 {
 	env->nb_philo = ft_atoi(argv[1]);
 	env->time_to_die = ft_atoi(argv[2]);

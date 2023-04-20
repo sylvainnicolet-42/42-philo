@@ -4,21 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "23f0b0204e391957",
+        "id": "9f4845db4d63fbe4",
         "type": "tabs",
         "children": [
           {
-            "id": "2ac5d7ee06d01f35",
+            "id": "de7be3c76a5c4b66",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "pdf",
               "state": {
-                "file": "Untitled.canvas",
-                "viewState": {
-                  "x": 475.8891033699281,
-                  "y": 300.6107873180159,
-                  "zoom": -0.5380530243149638
-                }
+                "file": "fr.subject.pdf"
               }
             }
           }
@@ -72,7 +67,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "dce65cdec20c0289",
@@ -88,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "fr.subject.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "fr.subject.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.canvas"
+                "file": "fr.subject.pdf"
               }
             }
           }
@@ -149,8 +144,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2ac5d7ee06d01f35",
+  "active": "de7be3c76a5c4b66",
   "lastOpenFiles": [
-    "Untitled.canvas"
+    "Architecture.canvas",
+    "Lexique.md",
+    "ft_start_simulation.md",
+    "Functions.png",
+    "fr.subject.pdf"
   ]
 }
