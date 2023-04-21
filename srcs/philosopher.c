@@ -16,9 +16,10 @@ void	*ft_philo_life(void *arg)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *)arg;
-	(void)arg;
-	ft_eat(philo);
+	philo = (t_philo *) arg;
+	ft_eating(philo);
+	ft_sleeping(philo);
+	ft_thinking(philo);
 	return (NULL);
 }
 

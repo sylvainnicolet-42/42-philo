@@ -23,8 +23,8 @@ static int	ft_start_simulation(t_env *env)
 	ft_display_philos(philo, env);
 	ft_init_threads(philo, env);
 	env->start_time = ft_now();
-	ft_display_env(env);
 	ft_end_threads(philo, env);
+	ft_display_philos(philo, env);
 	return (EXIT_SUCCESS);
 }
 
@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	ft_init_env(argv, &env);
+	ft_display_env(&env);
 	ft_start_simulation(&env);
 	return (EXIT_SUCCESS);
 }

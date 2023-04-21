@@ -55,7 +55,9 @@ int			ft_init_threads(t_philo *philo, t_env *env);
 void		ft_end_threads(t_philo *philo, t_env *env);
 
 // ----- ACTIONS ----- //
-void		ft_eat(t_philo *philo);
+void		ft_eating(t_philo *philo);
+void		ft_sleeping(t_philo *philo);
+void		ft_thinking(t_philo *philo);
 
 // ----- UTILS ----- //
 int			ft_atoi(const char *str);
