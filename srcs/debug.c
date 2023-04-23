@@ -23,6 +23,7 @@ void	ft_display_env(t_env *env)
 	if (env->meal_must_be_checked == TRUE)
 		printf(" ↳ [philo_must_eat] => [%d]\n", env->philo_must_eat);
 	printf("[start_time] => [%ld]\n", env->start_time);
+	printf("\n");
 }
 
 void	ft_display_philos(t_philo *philo, t_env *env)

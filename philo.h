@@ -32,6 +32,7 @@ typedef struct s_env
 	int				philo_must_eat;
 	int				meal_must_be_checked;
 	int				is_ready;
+	int				is_over;
 	long int		start_time;
 	pthread_mutex_t	*fork;
 }	t_env;
@@ -41,6 +42,8 @@ typedef struct s_philo
 	int				id;
 	int				nb_meal_eaten;
 	int				is_dead;
+	long int		thread_start_time;
+	long int		last_meal_time;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
@@ -56,16 +59,22 @@ void		*ft_philo_life(void *arg);
 
 // ----- THREADS ----- //
 int			ft_init_threads(t_philo *philo, t_env *env);
-void		ft_end_threads(t_philo *philo, t_env *env);
+
+// ----- SIMULATION ----- //
+int			ft_start_simulation(t_env *env);
 
 // ----- ACTIONS ----- //
 void		ft_eating(t_philo *philo);
 void		ft_sleeping(t_philo *philo);
 void		ft_thinking(t_philo *philo);
+void		ft_die(t_philo *philo);
 
 // ----- UTILS ----- //
 int			ft_atoi(const char *str);
 long int	ft_now(void);
+
+// ----- PRINT ----- //
+void		ft_print_action(t_philo *philo, char *action);
 
 // ----- DEBUG ----- //
 void		ft_display_env(t_env *env);

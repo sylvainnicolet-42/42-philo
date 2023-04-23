@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread.c                                           :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <synicole@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 20:40:35 by synicole          #+#    #+#             */
-/*   Updated: 2023/04/20 20:40:37 by synicole         ###   ########.fr       */
+/*   Created: 2023/04/23 16:09:01 by synicole          #+#    #+#             */
+/*   Updated: 2023/04/23 16:09:03 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	ft_init_threads(t_philo *philo, t_env *env)
+void	ft_print_action(t_philo *philo, char *action)
 {
-	int	i;
-
-	i = 0;
-	while (i < env->nb_philo)
-	{
-		philo[i].right_fork = philo[(i + 1) % env->nb_philo].left_fork;
-		pthread_create(&philo[i].thread, NULL, &ft_philo_life, &philo[i]);
-		i++;
-	}
-	return (0);
+	printf(
+		"[%ldms] => [philo %d] [%s] [nb_meal_eaten: %d]\n",
+		ft_now() - philo->env->start_time, philo->id, action,
+		philo->nb_meal_eaten);
 }

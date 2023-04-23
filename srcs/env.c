@@ -20,6 +20,8 @@ int	ft_init_env(char **argv, t_env *env)
 	env->time_to_die = ft_atoi(argv[2]);
 	env->time_to_eat = ft_atoi(argv[3]);
 	env->time_to_sleep = ft_atoi(argv[4]);
+	env->is_ready = FALSE;
+	env->is_over = FALSE;
 	env->meal_must_be_checked = FALSE;
 	if (argv[5])
 	{
@@ -33,6 +35,5 @@ int	ft_init_env(char **argv, t_env *env)
 		(pthread_mutex_init(&env->fork[i], NULL));
 		i++;
 	}
-	env->is_ready = FALSE;
 	return (0);
 }
