@@ -14,11 +14,25 @@
 
 int	ft_init_env(char **argv, t_env *env)
 {
+	int	i;
+
 	env->nb_philo = ft_atoi(argv[1]);
 	env->time_to_die = ft_atoi(argv[2]);
 	env->time_to_eat = ft_atoi(argv[3]);
 	env->time_to_sleep = ft_atoi(argv[4]);
+	env->meal_must_be_checked = FALSE;
 	if (argv[5])
+	{
+		env->meal_must_be_checked = TRUE;
 		env->philo_must_eat = ft_atoi(argv[5]);
+	}
+	env->fork = malloc(sizeof(pthread_mutex_t) * env->nb_philo);
+	i = 0;
+	while (i < env->nb_philo)
+	{
+		(pthread_mutex_init(&env->fork[i], NULL));
+		i++;
+	}
+	env->is_ready = FALSE;
 	return (0);
 }

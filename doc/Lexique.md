@@ -12,3 +12,11 @@ Un mutex (contraction de mutual exclusion, ou exclusion mutuelle en français) e
 Un mutex est associé à une section critique de code, c'est-à-dire une partie de code qui doit être exécutée de manière atomique, c'est-à-dire sans être interrompue par un autre thread. Lorsqu'un thread souhaite entrer dans la section critique, il tente de verrouiller le mutex. Si le mutex est déjà verrouillé par un autre thread, le thread est mis en attente jusqu'à ce que le mutex soit déverrouillé par le thread qui le détient.
 
 Une fois qu'un thread a verrouillé le mutex, il peut exécuter la section critique en toute sécurité, sachant qu'aucun autre thread ne peut y accéder simultanément. Une fois que la section critique est terminée, le thread doit déverrouiller le mutex, permettant ainsi à un autre thread d'y accéder.
+
+---
+## pthread_create
+La fonction pthread_create() est utilisée pour créer un nouveau thread. Elle prend quatre arguments : un pointeur vers une variable pthread_t qui identifiera le thread créé, un pointeur vers une structure pthread_attr_t qui contient les attributs du thread (par défaut NULL), un pointeur vers la fonction que le thread doit exécuter, et un pointeur vers les arguments de la fonction.
+
+---
+## pthread_join
+La fonction pthread_join() est utilisée pour attendre qu'un thread se termine et récupérer sa valeur de retour. Elle prend deux arguments : le pthread_t du thread à rejoindre et un pointeur vers un emplacement qui contiendra la valeur de retour du thread.

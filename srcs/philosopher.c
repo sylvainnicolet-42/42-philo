@@ -17,6 +17,8 @@ void	*ft_philo_life(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *) arg;
+	while (philo->env->is_ready == FALSE)
+		continue ;
 	ft_eating(philo);
 	ft_sleeping(philo);
 	ft_thinking(philo);
@@ -33,6 +35,8 @@ int	ft_init_philos(t_philo *philo, t_env *env)
 		philo[i].id = i + 1;
 		philo[i].nb_meal_eaten = 0;
 		philo[i].is_dead = FALSE;
+		philo[i].left_fork = &env->fork[i];
+		philo[i].right_fork = NULL;
 		philo[i].env = env;
 		i++;
 	}

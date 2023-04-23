@@ -21,15 +21,19 @@
 
 # define TRUE 1
 # define FALSE 0
+# define DEBUG TRUE
 
 typedef struct s_env
 {
-	int			nb_philo;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			philo_must_eat;
-	long int	start_time;
+	int				nb_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				philo_must_eat;
+	int				meal_must_be_checked;
+	int				is_ready;
+	long int		start_time;
+	pthread_mutex_t	*fork;
 }	t_env;
 
 typedef struct s_philo

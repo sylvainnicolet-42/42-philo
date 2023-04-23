@@ -38,6 +38,16 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
+/**
+ * Returns the current timestamp in milliseconds.
+ * This function uses gettimeofday to get the current time in microseconds.
+ *
+ * It calculates the current timestamp in milliseconds by multiplying
+ * the number of seconds by 1000 and adding the number of microseconds
+ * divided by 1000.
+ *
+ * @return The current timestamp in milliseconds.
+*/
 long int	ft_now(void)
 {
 	struct timeval	now;

@@ -19,6 +19,7 @@ int	ft_init_threads(t_philo *philo, t_env *env)
 	i = 0;
 	while (i < env->nb_philo)
 	{
+		philo[i].right_fork = philo[(i + 1) % env->nb_philo].left_fork;
 		pthread_create(&philo[i].thread, NULL, &ft_philo_life, &philo[i]);
 		i++;
 	}

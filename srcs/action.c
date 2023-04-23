@@ -14,16 +14,20 @@
 
 void	ft_eating(t_philo *philo)
 {
-	printf("%d has taken a fork\n", philo->id);
-	printf("%d has taken a fork\n", philo->id);
-	printf("%d is eating\n", philo->id);
+	pthread_mutex_lock(philo->left_fork);
+	printf("%ld %d has taken a fork\n", ft_now(), philo->id);
+	pthread_mutex_lock(philo->right_fork);
+	printf("%ld %d has taken a fork\n", ft_now(), philo->id);
+	printf("%ld %d is eating\n", ft_now(), philo->id);
 	usleep(philo->env->time_to_eat * 1000);
 	philo->nb_meal_eaten += 1;
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }
 
 void	ft_sleeping(t_philo *philo)
 {
-	printf("%d is sleeping\n", philo->id);
+	printf("%ld %d is sleeping\n", ft_now(), philo->id);
 	usleep(philo->env->time_to_sleep * 1000);
 }
 

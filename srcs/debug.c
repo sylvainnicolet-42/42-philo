@@ -19,7 +19,9 @@ void	ft_display_env(t_env *env)
 	printf("[time_to_die] => [%d]\n", env->time_to_die);
 	printf("[time_to_eat] => [%d]\n", env->time_to_eat);
 	printf("[time_to_sleep] => [%d]\n", env->time_to_sleep);
-	printf("[philo_must_eat] => [%d]\n", env->philo_must_eat);
+	printf("[meal_must_be_checked] => [%d]\n", env->meal_must_be_checked);
+	if (env->meal_must_be_checked == TRUE)
+		printf(" ↳ [philo_must_eat] => [%d]\n", env->philo_must_eat);
 	printf("[start_time] => [%ld]\n", env->start_time);
 }
 
