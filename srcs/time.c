@@ -5,27 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <synicole@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 17:27:30 by synicole          #+#    #+#             */
-/*   Updated: 2023/04/23 17:27:32 by synicole         ###   ########.fr       */
+/*   Created: 2023/04/30 11:48:32 by synicole          #+#    #+#             */
+/*   Updated: 2023/04/30 11:48:34 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
 /**
- * Returns the current timestamp in milliseconds.
- * This function uses gettimeofday to get the current time in microseconds.
+ * Get the current time in milliseconds.
  *
- * It calculates the current timestamp in milliseconds by multiplying
- * the number of seconds by 1000 and adding the number of microseconds
- * divided by 1000.
- *
- * @return The current timestamp in milliseconds.
+ * @return The current time in milliseconds as a time_t value.
 */
-long int	ft_now(void)
+time_t	ft_get_time_in_ms(void)
 {
-	struct timeval	now;
+	struct timeval		tv;
 
-	gettimeofday(&now, NULL);
-	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }

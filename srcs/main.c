@@ -14,18 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	t_env	env;
+	t_env	*env;
 
+	env = NULL;
 	if (argc < 5 || argc > 6)
-	{
-		printf(
-			"./philo [number_of_philosophers] [time_to_die] [time_to_eat] "
-			"[time_to_sleep] *[number_of_times_each_philosopher_must_eat]\n");
+		return (ft_msg(MSG_USAGE, NULL, EXIT_FAILURE));
+	if (!ft_is_valid_input(argc, argv))
 		return (EXIT_FAILURE);
-	}
-	ft_init_env(argv, &env);
-	if (DEBUG == TRUE)
-		ft_display_env(&env);
-	ft_start_simulation(&env);
+	env = ft_init_env(argc, argv);
+	if (!env)
+		return (EXIT_FAILURE);
+	if (!ft_start_simulation(env))
+		return (EXIT_FAILURE);
+	ft_stop_simulation(env);
 	return (EXIT_SUCCESS);
 }

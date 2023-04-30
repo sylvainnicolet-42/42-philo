@@ -18,66 +18,72 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <limits.h>
 
-# define TRUE 1
-# define FALSE 0
-# define DEBUG TRUE
+// ----- DEBUG MODE ----- //
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
+// ----- BOOLEAN ----- //
+enum e_bool
+{
+	E_FALSE,
+	E_TRUE,
+};
+
+// ----- MAX ----- //
+# define MAX_PHILOS	"250"
+
+// ----- MESSAGES ----- //
+# define MSG_USAGE "Usage: ./philo <number_of_philosophers> \
+<time_to_die> <time_to_eat> <time_to_sleep> \
+[number_of_times_each_philosopher_must_eat]\n"
+# define MSG_INVALID_INPUT_DIGIT "%s must be a valid integer between 0 \
+and 2147483647.\n"
+# define MSG_INVALID_INPUT_PHILO "Must be between 1 and %s philosophers.\n"
+# define MSG_ERR_MALLOC	"Could not allocate memory.\n"
+# define MSG_ERR_MUTEX	"Could not create mutex.\n"
+
+// ----- STRUCTURES ----- //
+typedef struct s_philo	t_philo;
 
 typedef struct s_env
 {
-	int				nb_philo;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				philo_must_eat;
-	int				meal_must_be_checked;
-	int				is_ready;
+	unsigned int	nb_philos;
+	time_t			time_to_die;
+	time_t			time_to_eat;
+	time_t			time_to_sleep;
+	int				must_eat_count;
 	int				is_over;
-	long int		start_time;
-	pthread_mutex_t	*fork;
+	t_philo			**philosophers;
 }	t_env;
 
 typedef struct s_philo
 {
-	int				id;
-	int				nb_meal_eaten;
-	int				is_dead;
-	long int		thread_start_time;
-	long int		last_meal_time;
-	pthread_t		thread;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
+	unsigned int	id;
+	unsigned int	nb_meal_eaten;
+	unsigned int	fork[2];
+	pthread_mutex_t	meal_time_lock;
 	t_env			*env;
 }	t_philo;
 
 // ----- ENV ----- //
-int			ft_init_env(char **argv, t_env *env);
+t_env	*ft_init_env(int argc, char **argv);
 
-// ----- PHILOSOPHERS ----- //
-int			ft_init_philos(t_philo *philo, t_env *env);
-void		*ft_philo_life(void *arg);
-
-// ----- THREADS ----- //
-int			ft_init_threads(t_philo *philo, t_env *env);
+// ----- VALIDATION ----- //
+int		ft_is_valid_input(int argc, char **argv);
+int		ft_integer_atoi(const char *str);
 
 // ----- SIMULATION ----- //
-int			ft_start_simulation(t_env *env);
+int		ft_start_simulation(t_env *env);
+void	ft_stop_simulation(t_env *env);
 
-// ----- ACTIONS ----- //
-void		ft_eating(t_philo *philo);
-void		ft_sleeping(t_philo *philo);
-void		ft_thinking(t_philo *philo);
-void		ft_die(t_philo *philo);
+// ----- TIME ----- //
+time_t	ft_get_time_in_ms(void);
 
-// ----- UTILS ----- //
-int			ft_atoi(const char *str);
-long int	ft_now(void);
-
-// ----- PRINT ----- //
-void		ft_print_action(t_philo *philo, char *action);
-
-// ----- DEBUG ----- //
-void		ft_display_env(t_env *env);
-void		ft_display_philos(t_philo *philo, t_env *env);
+// ----- EXIT ----- //
+int		ft_msg(char *str, char *detail, int exit_n);
+void	*ft_error(char *str);
 
 #endif
