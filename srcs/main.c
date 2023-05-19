@@ -12,6 +12,16 @@
 
 #include "../philo.h"
 
+/**
+ * This function is the entry point of the program.
+ * It initializes the simulation environment, starts the simulation,
+ * and stops it when finished.
+ *
+ * @param argc The number of arguments passed to the program.
+ * @param argv The arguments passed to the program.
+ *
+ * @return int The exit code of the program.
+ */
 int	main(int argc, char **argv)
 {
 	t_env	*env;
@@ -24,7 +34,6 @@ int	main(int argc, char **argv)
 	env = ft_init_env(argc, argv);
 	if (!env)
 		return (EXIT_FAILURE);
-	printf("Simulation initialized.\n");
 	if (!ft_start_simulation(env))
 		return (EXIT_FAILURE);
 	ft_stop_simulation(env);

@@ -21,7 +21,7 @@
 # include <limits.h>
 
 // ----- DEBUG MODE ----- //
-# define DEBUG 1
+# define DEBUG 0
 
 // ----- MAX ----- //
 # define MAX_PHILOS	"250"
@@ -36,6 +36,8 @@ and 2147483647.\n"
 # define MSG_ERR_MALLOC	"Could not allocate memory.\n"
 # define MSG_ERR_MUTEX	"Could not create mutex.\n"
 # define MSG_ERR_THREAD	"Could not create thread.\n"
+# define MSG_ERR_PHILO	"Could not create philosopher.\n"
+# define MSG_ERR_GLOBAL_MUTEX "Could not create global mutex.\n"
 
 // ----- STRUCTURES ----- //
 typedef struct s_env	t_env;
@@ -68,7 +70,7 @@ typedef struct s_philo
 	pthread_mutex_t	meal_time_lock;
 }	t_philo;
 
-// ----- ENUMES ----- //
+// ----- ENUM ----- //
 typedef enum e_status
 {
 	E_DIED = 0,
@@ -103,7 +105,6 @@ time_t	ft_get_time_in_ms(void);
 
 // ----- OUTPUT ----- //
 void	ft_write_status(t_philo *philo, int monitoring_report, t_status status);
-void	ft_write_outcome(t_env *env);
 
 // ----- EXIT ----- //
 int		ft_msg(char *str, char *detail, int exit_n);
@@ -111,5 +112,9 @@ void	*ft_error_null(char *str, t_env *env);
 int		ft_error_int(char *str, t_env *env);
 void	ft_free_env(t_env *env);
 void	ft_destroy_mutexes(t_env *env);
+
+// ----- DEBUG ----- //
+void	ft_write_status_debug(t_philo *philo, t_status status);
+void	ft_write_outcome_debug(t_env *env);
 
 #endif

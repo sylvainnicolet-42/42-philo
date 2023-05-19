@@ -12,7 +12,14 @@
 
 #include "../philo.h"
 
-static int	ft_is_digit(const char *str)
+/**
+ * Check if a string contains only digits.
+ *
+ * @param str The string to check.
+ *
+ * @return int 1 if the string contains only digits, otherwise 0.
+ */
+static int	ft_contains_only_digit(const char *str)
 {
 	int	i;
 
@@ -26,6 +33,13 @@ static int	ft_is_digit(const char *str)
 	return (1);
 }
 
+/**
+ * Convert a string to an integer.
+ *
+ * @param str The string to convert.
+ *
+ * @return int The integer value of the string, or -1 if the value is too big.
+ */
 int	ft_integer_atoi(const char *str)
 {
 	unsigned long long int	nb;
@@ -43,6 +57,13 @@ int	ft_integer_atoi(const char *str)
 	return ((int)nb);
 }
 
+/**
+ *
+ * @param argc The number of arguments passed to the program.
+ * @param argv The arguments passed to the program.
+ *
+ * @return int 1 if all arguments are valid, otherwise 0.
+ */
 int	ft_is_valid_input(int argc, char **argv)
 {
 	int	i;
@@ -51,7 +72,7 @@ int	ft_is_valid_input(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_is_digit(argv[i]))
+		if (!ft_contains_only_digit(argv[i]))
 			return (ft_msg(MSG_INVALID_INPUT_DIGIT, argv[i], 0));
 		nb = ft_integer_atoi(argv[i]);
 		if (nb == -1)

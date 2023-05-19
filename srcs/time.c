@@ -15,6 +15,8 @@
 /**
  * Get the current time in milliseconds.
  *
+ * @param void
+ *
  * @return The current time in milliseconds as a time_t value.
 */
 time_t	ft_get_time_in_ms(void)

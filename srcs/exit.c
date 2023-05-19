@@ -12,6 +12,13 @@
 
 #include "../philo.h"
 
+/**
+ * Frees the environment structure.
+ *
+ * @param env The environment structure.
+ *
+ * @return void
+ */
 void	ft_free_env(t_env *env)
 {
 	unsigned int	i;
@@ -32,6 +39,13 @@ void	ft_free_env(t_env *env)
 	free(env);
 }
 
+/**
+ * Destroys the mutexes.
+ *
+ * @param env The environment structure.
+ *
+ * @return void
+ */
 void	ft_destroy_mutexes(t_env *env)
 {
 	unsigned int	i;
@@ -49,6 +63,7 @@ void	ft_destroy_mutexes(t_env *env)
 
 /**
  * Print a message with or without a detail, and return an exit code.
+ *
  * @param str The string to print.
  * @param detail An optional detail to print after the string.
  * @param exit_n The integer value to return from the function.
@@ -64,6 +79,14 @@ int	ft_msg(char *str, char *detail, int exit_n)
 	return (exit_n);
 }
 
+/**
+ * Print a message and free the environment structure if it is not NULL.
+ *
+ * @param str The string to print.
+ * @param env The environment structure.
+ *
+ * @return int 0
+ */
 int	ft_error_int(char *str, t_env *env)
 {
 	if (env != NULL)
@@ -72,6 +95,14 @@ int	ft_error_int(char *str, t_env *env)
 	return (0);
 }
 
+/**
+ * Print a message and free the environment structure if it is not NULL.
+ *
+ * @param str The string to print.
+ * @param env The environment structure.
+ *
+ * @return void* NULL
+ */
 void	*ft_error_null(char *str, t_env *env)
 {
 	if (env != NULL)

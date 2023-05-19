@@ -12,6 +12,14 @@
 
 #include "../philo.h"
 
+/**
+ * This function sets the simulation stop flag to the is_over value.
+ *
+ * @param env The environment structure.
+ * @param is_over The value to set the simulation stop flag to.
+ *
+ * @return void
+ */
 static void	ft_set_simulation_stop_flag(t_env *env, int is_over)
 {
 	pthread_mutex_lock(&env->simulation_stop_lock);
@@ -19,6 +27,17 @@ static void	ft_set_simulation_stop_flag(t_env *env, int is_over)
 	pthread_mutex_unlock(&env->simulation_stop_lock);
 }
 
+/**
+ * This function checks if a philosopher needs to be killed based on
+ * the time elapsed since their last meal and the specified time_to_die.
+ * If the elapsed time exceeds the time_to_die, it sets the simulation stop flag,
+ * writes the death status of the philosopher, unlocks the meal_time_lock mutex,
+ * and returns 1. Otherwise, it returns 0.
+ *
+ * @param philo The philosopher.
+ *
+ * @return int 1 if the philosopher needs to be killed, otherwise returns 0.
+ */
 static int	ft_kill_philo(t_philo *philo)
 {
 	time_t	time;
@@ -34,7 +53,18 @@ static int	ft_kill_philo(t_philo *philo)
 	return (0);
 }
 
-static int	ft_end_condition_reached(t_env *env)
+/**
+ * This function checks if the end condition of the simulation is reached.
+ * It iterates over the philosophers, checks if any philosopher needs
+ * to be killed, and verifies if all philosophers have eaten enough meals
+ * based on the must_eat_count.
+ * If the end condition is met, it sets the simulation stop flag and returns 1.
+ *
+ * @param env The environment structure.
+ *
+ * @return int 1 if the end condition is reached, otherwise returns 0.
+ */
+static int	ft_is_end_condition_reached(t_env *env)
 {
 	unsigned int	i;
 	int				all_ate_enough;
@@ -61,6 +91,16 @@ static int	ft_end_condition_reached(t_env *env)
 	return (0);
 }
 
+/**
+ * This function represents the monitoring thread of the simulation.
+ * It continuously checks the end conditions of the simulation
+ * and sleeps for a short period.
+ * If the must_eat_count is 0, the monitoring thread returns immediately.
+ *
+ * @param data The data passed to the thread.
+ *
+ * @return void* NULL.
+ */
 void	*ft_monitoring(void *data)
 {
 	t_env	*env;
@@ -72,7 +112,7 @@ void	*ft_monitoring(void *data)
 	ft_simulation_start_delay(env->start_time);
 	while (1)
 	{
-		if (ft_end_condition_reached(env) == 1)
+		if (ft_is_end_condition_reached(env) == 1)
 			return (NULL);
 		usleep(1000);
 	}

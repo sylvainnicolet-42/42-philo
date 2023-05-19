@@ -12,6 +12,16 @@
 
 #include "../philo.h"
 
+/**
+ * This function represents the sleeping action of a philosopher.
+ * The philosopher sleeps for the specified sleep_time. If the simulation
+ * is over, the philosopher does not sleep.
+ *
+ * @param env The environment structure.
+ * @param sleep_time The time to sleep in milliseconds.
+ *
+ * @return void * NULL.
+ */
 static void	ft_philo_sleep(t_env *env, time_t sleep_time)
 {
 	time_t	wake_up;
@@ -25,6 +35,17 @@ static void	ft_philo_sleep(t_env *env, time_t sleep_time)
 	}
 }
 
+/**
+ * This function represents the eating action of a philosopher.
+ * The philosopher locks the two forks they need to eat and then sleeps
+ * for the specified time_to_eat. If the simulation is over, the philosopher
+ * does not eat. The philosopher then unlocks the two forks and sleeps
+ * for the specified time_to_sleep.
+ *
+ * @param philo The philosopher.
+ *
+ * @return void * NULL.
+ */
 static void	ft_eat_sleep(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->env->fork_locks[philo->fork[0]]);
@@ -48,6 +69,18 @@ static void	ft_eat_sleep(t_philo *philo)
 	ft_philo_sleep(philo->env, philo->env->time_to_sleep);
 }
 
+/**
+ * This function represents the thinking action of a philosopher.
+ * The philosopher calculates the time available for thinking based on the
+ * time since their last meal and the specified time_to_die and time_to_eat.
+ * The function then sleeps for the calculated time and optionally writes
+ * the thinking status if silent is set to 0.
+ *
+ * @param philo The philosopher.
+ * @param silent If silent is 1, the philosopher does not write the status.
+ *
+ * @return void * NULL.
+ */
 static void	ft_think(t_philo *philo, int silent)
 {
 	time_t	time_to_think;
@@ -68,6 +101,17 @@ static void	ft_think(t_philo *philo, int silent)
 	ft_philo_sleep(philo->env, time_to_think);
 }
 
+/**
+ * This function represents the routine for a philosopher when there is only
+ * one philosopher in the simulation.
+ * The philosopher acquires a fork, writes the status, sleeps for
+ * the specified time_to_die duration, writes the status of their death,
+ * and releases the acquired fork.
+ *
+ * @param philo The philosopher.
+ *
+ * @return void * NULL.
+ */
 static void	*ft_alone(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->env->fork_locks[philo->fork[0]]);
@@ -78,6 +122,15 @@ static void	*ft_alone(t_philo *philo)
 	return (NULL);
 }
 
+/**
+ * This function represents the routine of a philosopher thread.
+ * It performs the necessary actions for a philosopher during the simulation,
+ * such as eating, sleeping, and thinking.
+ *
+ * @param data The data passed to the thread.
+ *
+ * @return void* NULL.
+ */
 void	*ft_philo_routine(void *data)
 {
 	t_philo	*philo;
