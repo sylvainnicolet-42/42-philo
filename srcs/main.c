@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	env = ft_init_env(argc, argv);
 	if (!env)
 		return (EXIT_FAILURE);
+	printf("Simulation initialized.\n");
 	if (!ft_start_simulation(env))
 		return (EXIT_FAILURE);
 	ft_stop_simulation(env);

@@ -20,10 +20,10 @@ static int	ft_is_digit(const char *str)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return (E_FALSE);
+			return (0);
 		i++;
 	}
-	return (E_TRUE);
+	return (1);
 }
 
 int	ft_integer_atoi(const char *str)
@@ -52,13 +52,13 @@ int	ft_is_valid_input(int argc, char **argv)
 	while (i < argc)
 	{
 		if (!ft_is_digit(argv[i]))
-			return (ft_msg(MSG_INVALID_INPUT_DIGIT, argv[i], E_FALSE));
+			return (ft_msg(MSG_INVALID_INPUT_DIGIT, argv[i], 0));
 		nb = ft_integer_atoi(argv[i]);
 		if (nb == -1)
-			return (ft_msg(MSG_INVALID_INPUT_DIGIT, argv[i], E_FALSE));
+			return (ft_msg(MSG_INVALID_INPUT_DIGIT, argv[i], 0));
 		if (i == 1 && (nb <= 0 || nb > ft_integer_atoi(MAX_PHILOS)))
-			return (ft_msg(MSG_INVALID_INPUT_PHILO, MAX_PHILOS, E_FALSE));
+			return (ft_msg(MSG_INVALID_INPUT_PHILO, MAX_PHILOS, 0));
 		i++;
 	}
-	return (E_TRUE);
+	return (1);
 }

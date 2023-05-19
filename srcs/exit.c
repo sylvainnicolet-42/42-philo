@@ -32,6 +32,21 @@ void	ft_free_env(t_env *env)
 	free(env);
 }
 
+void	ft_destroy_mutexes(t_env *env)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < env->nb_philos)
+	{
+		pthread_mutex_destroy(&env->fork_locks[i]);
+		pthread_mutex_destroy(&env->philosophers[i]->meal_time_lock);
+		i++;
+	}
+	pthread_mutex_destroy(&env->write_lock);
+	pthread_mutex_destroy(&env->simulation_stop_lock);
+}
+
 /**
  * Print a message with or without a detail, and return an exit code.
  * @param str The string to print.
@@ -49,8 +64,18 @@ int	ft_msg(char *str, char *detail, int exit_n)
 	return (exit_n);
 }
 
-void	*ft_error(char *str)
+int	ft_error_int(char *str, t_env *env)
 {
+	if (env != NULL)
+		ft_free_env(env);
+	printf("%s", str);
+	return (0);
+}
+
+void	*ft_error_null(char *str, t_env *env)
+{
+	if (env != NULL)
+		ft_free_env(env);
 	printf("%s", str);
 	return (NULL);
 }

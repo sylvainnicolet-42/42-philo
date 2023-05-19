@@ -4,12 +4,6 @@ CC				= gcc
 FLAGS 			= -Wall -Werror -Wextra -pthread -g
 SANITIZE		= -fsanitize=address
 
-# RUN 'make re MODE=debug' for debug mode.
-MODE = none
-ifeq ($(MODE), debug)
-	FLAGS += -D DEBUG=1 $(SANITIZE)
-endif
-
 # OBJ
 OBJS_DIR   		= .build
 OBJS 			= $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
