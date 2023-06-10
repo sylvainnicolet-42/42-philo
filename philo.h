@@ -18,13 +18,12 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include <limits.h>
 
 // ----- DEBUG MODE ----- //
-# define DEBUG 0
+# define DEBUG 1
 
 // ----- MAX ----- //
-# define MAX_PHILOS	"250"
+# define MAX_PHILOS	"200"
 
 // ----- MESSAGES ----- //
 # define MSG_USAGE "Usage: ./philo <number_of_philosophers> \

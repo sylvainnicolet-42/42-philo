@@ -4,20 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "9f4845db4d63fbe4",
+        "id": "9ac85771b50eca31",
         "type": "tabs",
         "children": [
           {
-            "id": "de7be3c76a5c4b66",
+            "id": "0400d41d57b95041",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "Architecture.canvas",
                 "viewState": {
-                  "x": 3337.5511630253122,
-                  "y": 1143.0274266157285,
-                  "zoom": 0.06687790341583998
+                  "x": 2664.2305376070885,
+                  "y": 1886.2351751390997,
+                  "zoom": -0.6888956705729166
                 }
               }
             }
@@ -51,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "over",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -67,9 +67,16 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "0df1fc1fecbb5248",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -150,12 +157,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "de7be3c76a5c4b66",
+  "active": "0400d41d57b95041",
   "lastOpenFiles": [
-    "Lexique.md",
+    "Assign forks.png",
     "Architecture.canvas",
-    "ft_start_simulation.md",
     "Functions.png",
-    "fr.subject.pdf"
+    "fr.subject.pdf",
+    "Intra_Projects_Philosophers_Edit.pdf",
+    "Lexique.md",
+    "ft_start_simulation.md"
   ]
 }

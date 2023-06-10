@@ -23,11 +23,6 @@ static void	ft_assign_forks(t_philo *philo)
 {
 	philo->fork[0] = philo->id;
 	philo->fork[1] = (philo->id + 1) % philo->env->nb_philos;
-	if (philo->id % 2)
-	{
-		philo->fork[0] = (philo->id + 1) % philo->env->nb_philos;
-		philo->fork[1] = philo->id;
-	}
 }
 
 /**
@@ -51,11 +46,11 @@ static t_philo	**ft_init_philosophers(t_env *env)
 		philos[i] = malloc(sizeof(t_philo) * 1);
 		if (!philos[i])
 			return (ft_error_null(MSG_ERR_MALLOC, env));
-		if (pthread_mutex_init(&philos[i]->meal_time_lock, 0) != 0)
-			return (ft_error_null(MSG_ERR_MUTEX, env));
 		philos[i]->env = env;
 		philos[i]->id = i;
 		philos[i]->nb_meal_eaten = 0;
+		if (pthread_mutex_init(&philos[i]->meal_time_lock, 0) != 0)
+			return (ft_error_null(MSG_ERR_MUTEX, env));
 		ft_assign_forks(philos[i]);
 		i++;
 	}
@@ -127,10 +122,10 @@ t_env	*ft_init_env(int argc, char **argv)
 	env->time_to_die = ft_integer_atoi(argv[i++]);
 	env->time_to_eat = ft_integer_atoi(argv[i++]);
 	env->time_to_sleep = ft_integer_atoi(argv[i++]);
-	env->is_over = 0;
 	env->must_eat_count = -1;
 	if (argc == 6)
 		env->must_eat_count = ft_integer_atoi(argv[i]);
+	env->is_over = 0;
 	env->philosophers = ft_init_philosophers(env);
 	if (!env->philosophers)
 		return (ft_error_null(MSG_ERR_PHILO, env));
