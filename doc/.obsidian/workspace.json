@@ -15,9 +15,9 @@
               "state": {
                 "file": "Architecture.canvas",
                 "viewState": {
-                  "x": 2664.2305376070885,
-                  "y": 1886.2351751390997,
-                  "zoom": -0.6888956705729166
+                  "x": 3669.4979190481263,
+                  "y": 2291.8811214337156,
+                  "zoom": -1.410148111979165
                 }
               }
             }
@@ -51,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "meal_eat",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -159,12 +159,12 @@
   },
   "active": "0400d41d57b95041",
   "lastOpenFiles": [
-    "Assign forks.png",
-    "Architecture.canvas",
-    "Functions.png",
-    "fr.subject.pdf",
     "Intra_Projects_Philosophers_Edit.pdf",
     "Lexique.md",
+    "Architecture.canvas",
+    "Assign forks.png",
+    "Functions.png",
+    "fr.subject.pdf",
     "ft_start_simulation.md"
   ]
 }

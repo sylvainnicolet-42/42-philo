@@ -95,6 +95,7 @@ static int	ft_is_end_condition_reached(t_env *env)
  * This function represents the monitoring thread of the simulation.
  * It continuously checks the end conditions of the simulation
  * and sleeps for a short period.
+ * usleep(1000) = 1ms
  * If the must_eat_count is 0, the monitoring thread returns immediately.
  *
  * @param data The data passed to the thread.
@@ -108,7 +109,6 @@ void	*ft_monitoring(void *data)
 	env = (t_env *)data;
 	if (env->must_eat_count == 0)
 		return (NULL);
-	ft_set_simulation_stop_flag(env, 0);
 	ft_simulation_start_delay(env->start_time);
 	while (1)
 	{

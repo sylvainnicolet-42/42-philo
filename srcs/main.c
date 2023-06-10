@@ -40,8 +40,8 @@ int	main(int argc, char **argv)
 	env = ft_init_env(argc, argv);
 	if (!env)
 		return (EXIT_FAILURE);
-//	if (!ft_start_simulation(env))
-//		return (EXIT_FAILURE);
-//	ft_stop_simulation(env);
+	if (!ft_start_simulation(env))
+		return (EXIT_FAILURE);
+	ft_stop_simulation(env);
 	return (EXIT_SUCCESS);
 }

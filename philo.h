@@ -20,7 +20,7 @@
 # include <sys/time.h>
 
 // ----- DEBUG MODE ----- //
-# define DEBUG 1
+# define DEBUG 0
 
 // ----- MAX ----- //
 # define MAX_PHILOS	"200"

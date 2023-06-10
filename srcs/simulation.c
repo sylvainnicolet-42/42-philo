@@ -17,6 +17,10 @@
  * It creates the threads for the philosophers and the monitoring thread.
  * It also sets the start time of the simulation.
  *
+ * 1. Set the start time of the simulation.
+ * 2. Create the threads for the philosophers.
+ * 3. Create the monitoring thread if there is more than one philosopher.
+ *
  * @param env The environment structure.
  *
  * @return int 1 if the simulation started successfully, 0 otherwise.
@@ -25,8 +29,7 @@ int	ft_start_simulation(t_env *env)
 {
 	unsigned int	i;
 
-	printf("start simulation\n");
-	env->start_time = ft_get_time_in_ms() + (env->nb_philos * 2 * 10);
+	env->start_time = ft_get_time_in_ms() + (env->nb_philos * 20);
 	i = 0;
 	while (i < env->nb_philos)
 	{

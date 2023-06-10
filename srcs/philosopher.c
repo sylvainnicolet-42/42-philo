@@ -13,14 +13,14 @@
 #include "../philo.h"
 
 /**
- * This function represents the sleeping action of a philosopher.
- * The philosopher sleeps for the specified sleep_time. If the simulation
- * is over, the philosopher does not sleep.
+ * This function sleeps for the specified sleep_time.
+ * If the simulation is over, break the loop.
+ * usleep(100) = 0.1 ms
  *
  * @param env The environment structure.
  * @param sleep_time The time to sleep in milliseconds.
  *
- * @return void * NULL.
+ * @return void
  */
 static void	ft_philo_sleep(t_env *env, time_t sleep_time)
 {
@@ -44,7 +44,7 @@ static void	ft_philo_sleep(t_env *env, time_t sleep_time)
  *
  * @param philo The philosopher.
  *
- * @return void * NULL.
+ * @return void
  */
 static void	ft_eat_sleep(t_philo *philo)
 {
@@ -57,7 +57,7 @@ static void	ft_eat_sleep(t_philo *philo)
 	philo->last_meal = ft_get_time_in_ms();
 	pthread_mutex_unlock(&philo->meal_time_lock);
 	ft_philo_sleep(philo->env, philo->env->time_to_eat);
-	if (ft_is_simulation_over(philo->env) == 0)
+	if (!ft_is_simulation_over(philo->env))
 	{
 		pthread_mutex_lock(&philo->meal_time_lock);
 		philo->nb_meal_eaten += 1;
@@ -79,7 +79,7 @@ static void	ft_eat_sleep(t_philo *philo)
  * @param philo The philosopher.
  * @param silent If silent is 1, the philosopher does not write the status.
  *
- * @return void * NULL.
+ * @return void
  */
 static void	ft_think(t_philo *philo, int silent)
 {
